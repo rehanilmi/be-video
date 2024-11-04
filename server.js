@@ -1,3 +1,4 @@
+// server.js
 require('dotenv').config();
 const express = require('express');
 const twilio = require('twilio');
@@ -5,7 +6,6 @@ const AccessToken = twilio.jwt.AccessToken;
 const VideoGrant = AccessToken.VideoGrant;
 
 const app = express();
-const port = process.env.PORT || 3000;
 
 const accountSid = process.env.twilio_sid;
 const apiKeySid = process.env.twilio_keySid;
@@ -24,7 +24,6 @@ app.get('/token', (req, res) => {
 
   console.log("Creating Access Token for identity:", identity);
 
-  // Pastikan kita membuat objek AccessToken dengan parameter yang benar
   const token = new AccessToken(accountSid, apiKeySid, apiKeySecret, { identity });
   token.identity = identity;
 
@@ -34,6 +33,5 @@ app.get('/token', (req, res) => {
   res.json({ token: token.toJwt() });
 });
 
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
-});
+// Ekspor aplikasi Express untuk digunakan oleh Vercel
+module.exports = app;
