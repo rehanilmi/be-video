@@ -1,0 +1,10 @@
+# Abaikan folder bernama "node_modules"
+node_modules/
+
+# Abaikan file environment
+.env
+
+# Abaikan file package-lock.json
+package-lock.json
+
+.idea/
