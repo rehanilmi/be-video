@@ -6,3 +6,5 @@ node_modules/
 
 # Abaikan file package-lock.json
 package-lock.json
+
+.idea/
